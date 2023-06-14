@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.send(`<h1>Bienvenid@!!</h1>`);
 });
 
-// app.use('/api/products', productsApiRoutes);
+app.use('/api/products', productsApiRoutes);
 // app.use('/api/providers', providersApiRoutes);
 
 // // Crear publisher/compañía
