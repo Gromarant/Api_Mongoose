@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
-mongoose.set('strictQuery', false);
-//const DATABASE_URL = "mongodb://localhost:27017/fakeshop";
-mongoose.connect("mongodb://localhost:27017/local", { useNewUrlParser: true, useUnifiedTopology: true});
+//const DATABASE_URL
+mongoose.connect("mongodb://localhost:27017/providers-products");
 
 const db = mongoose.connection;
 
