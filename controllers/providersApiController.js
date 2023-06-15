@@ -1,4 +1,5 @@
 const Provider = require('../models/providers');
+const Product = require('../models/products');
 
 // GET http://localhost:3000/api/providers
 // GET http://localhost:3000/api/providers?company_name=providerName
@@ -70,8 +71,34 @@ async function updateProviderByName(req, res) {
     });
   };
 };
+
+// DELETE http://localhost:3000/api/providers
+async function deleteProvider(req, res) {
+  try {
+    if (req.body && typeof req.body === 'object' && req.body !== {}) {
+      if (req.body.company_name) {
+        const { company_name } = req.body;
+        //busca el id del provider para pasarlo al delete de products
+        const providerId = await Provider.find({ company_name: RegExp(company_name, 'i') })
+        await Product.deleteMany({ provider: providerId[0]._id.toString() })
+        await Provider.deleteOne({ company_name: RegExp(company_name, 'i') })
+        res.status(200).json({
+          message: `provider eliminado con éxito, company_name: ${company_name}`
+        });
+      }
+    };
+  }
+  catch(error) {
+    console.error(error);
+    res.status(400).json({
+      msj: `Error: ${error}`
+    });
+  };
+};
+
 module.exports = {
   getProviders,
   createProvider,
-  updateProviderByName
+  updateProviderByName,
+  deleteProvider
 }
