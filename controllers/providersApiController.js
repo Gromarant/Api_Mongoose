@@ -23,8 +23,35 @@ async function getProviders(req, res)  {
       msj: `Error: ${error}`
     });
   };
-}
+};
+
+// POST http://localhost:3000/api/providers
+async function createProviders(req, res) {
+  try {
+    if (req.body && typeof req.body === 'object' && req.body !== {} ) {
+      const { company_name, CIF, address, url_web } = req.body;
+      const provider = {
+        "company_name": company_name,
+        "CIF": CIF,
+        "address": address,
+        "url_web": url_web,
+      }
+      await new Provider(provider).save();
+      res.status(201).json({
+        message: "provider creado con éxito",
+        provider: provider
+      });
+    };
+  }
+  catch(error) {
+    console.error(error);
+    res.status(400).json({
+      msj: `Error: ${error}`
+    });
+  };
+};
 
 module.exports = {
-  getProviders
+  getProviders,
+  createProviders
 }
