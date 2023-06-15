@@ -26,7 +26,7 @@ async function getProviders(req, res)  {
 };
 
 // POST http://localhost:3000/api/providers
-async function createProviders(req, res) {
+async function createProvider(req, res) {
   try {
     if (req.body && typeof req.body === 'object' && req.body !== {} ) {
       const { company_name, CIF, address, url_web } = req.body;
@@ -51,7 +51,27 @@ async function createProviders(req, res) {
   };
 };
 
+// PUT http://localhost:3000/api/providers
+async function updateProviderByName(req, res) {
+  try {
+    if (req.body && typeof req.body === 'object' && req.body !== {} ) {
+      const { old_companyName, new_companyData } = req.body;
+      await Provider.findOneAndUpdate({ company_name: old_companyName}, new_companyData);
+      res.status(200).json({
+        message: "provider Modificado con éxito",
+        newDataProvider: new_companyData
+      });
+    };
+  }
+  catch(error) {
+    console.error(error);
+    res.status(400).json({
+      msj: `Error: ${error}`
+    });
+  };
+};
 module.exports = {
   getProviders,
-  createProviders
+  createProvider,
+  updateProviderByName
 }

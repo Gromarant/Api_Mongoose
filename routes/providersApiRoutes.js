@@ -4,6 +4,7 @@ const providersApiRoutes = express.Router();
 
 
 providersApiRoutes.get('/', providersApiController.getProviders);
-providersApiRoutes.post('/', providersApiController.createProviders);
+providersApiRoutes.post('/', providersApiController.createProvider);
+providersApiRoutes.put('/', providersApiController.updateProviderByName);
 
 module.exports = providersApiRoutes;
