@@ -8,5 +8,6 @@ const productsApiRoutes = express.Router();
 productsApiRoutes.get('/', productsApiController.getProducts);
 productsApiRoutes.post('/', productsApiController.createProduct);
 productsApiRoutes.put('/', productsApiController.updateProductByTitle);
+productsApiRoutes.delete('/', productsApiController.deleteProduct);
 
 module.exports = productsApiRoutes;

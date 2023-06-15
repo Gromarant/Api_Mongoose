@@ -79,9 +79,39 @@ async function updateProductByTitle(req, res) {
 };
 
 
+// DELETE http://localhost:3000/api/products
+async function deleteProduct(req, res) {
+  try {
+    if (req.body && typeof req.body === 'object' && req.body !== {}) {
+      if (req.body.title) {
+        const { title } = req.body;
+        await Product.deleteOne({ title: RegExp(title, 'i') })
+        res.status(200).json({
+          message: `producto eliminado con éxito, title: ${title}`
+        });
+      }
+      else if (req.body.provider) {
+        const { provider } = req.body;
+        const providerId = await Provider.find({ company_name: RegExp(provider, 'i') })
+        const deleteProducts = await Product.deleteMany({ provider: providerId})
+        res.status(200).json({
+          message: `productos eliminados con éxito: ${deleteProducts}`
+        });
+      };
+    };
+  }
+  catch(error) {
+    console.error(error);
+    res.status(400).json({
+      msj: `Error: ${error}`
+    });
+  };
+};
+
 
 module.exports = {
   getProducts,
   createProduct,
-  updateProductByTitle
+  updateProductByTitle,
+  deleteProduct
 }
