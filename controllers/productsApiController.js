@@ -63,11 +63,21 @@ async function updateProductByTitle(req, res) {
   try {
     if (req.body && typeof req.body === 'object' && req.body !== {} ) {
       const { old_title, new_data } = req.body;
-      await Product.findOneAndUpdate({ title: old_title}, new_data);
-      res.status(200).json({
-        message: "producto Modificado con éxito",
-        newData: new_data
-      });
+      if(new_data.provider) {
+        const providerId = await Provider.find({ company_name: RegExp(new_data.provider, 'i') })
+        await Product.findOneAndUpdate({ title: old_title}, { provider: providerId[0]._id.toString()});
+        res.status(200).json({
+          message: "producto Modificado con éxito",
+          newData: new_data
+        });
+      }
+      else {
+        await Product.findOneAndUpdate({ title: old_title}, new_data);
+        res.status(200).json({
+          message: "producto Modificado con éxito",
+          newData: new_data
+        });
+      }
     };
   }
   catch(error) {
