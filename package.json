@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "generate-docs": "jsdoc -c ./jsdoc.json README.md"
   },
   "author": "Mariangelica Rodriguez",
   "license": "ISC",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
+    "jsdoc": "^4.0.2",
     "morgan": "^1.10.0"
   }
 }

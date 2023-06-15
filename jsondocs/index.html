@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Api_Mongoose</h1>
+<p>Api rest with MongoDb + Express
+Welcome! This README file will provide you with an overview of the API, its features, how to use it, and other important information.
+<br>
+<br></p>
+<h2>API structure</h2>
+<p>This rest api is created on node.js with express (server), javascript files with business logic, models for data access control, databases with MongoDb (Non-relational database)
+<br></p>
+<p><a href="/README.md"><img align="center" src="./public/assets/images/architecture.png"></a>
+<br>
+<br></p>
+<h2>API Base URL</h2>
+<p>The base URL's for accessing the API are: http://localhost:3000/api/providers and http://localhost:3000/api/products
+<br>
+<br></p>
+<h3>Introduction</h3>
+<p>The Api_Mongoose is an API for managing a collection of providers and it's products. It provides endpoints to retrieve, search, create, update, and delete them.
+<br>
+<br></p>
+<h3>Getting Started</h3>
+<p>Prerequisites
+To use this API, you will need:</p>
+<ol>
+<li>Ensure that you have a local development environment set up with Node.js and npm installed.</li>
+<li>Make sure you have a data base conection.
+<br>
+<br></li>
+</ol>
+<h3>Installation:</h3>
+<ol>
+<li>Clone the Api_Mongoose repository to your local machine.</li>
+<li>Navigate to the project directory.</li>
+<li>Run the following command to install the dependencies:
+<br>
+<br></li>
+</ol>
+<pre class="prettyprint source"><code>npm install
+</code></pre>
+<br>
+<h3>Starting the API:</h3>
+<p>In the project directory, run the following command to start the API server:
+<br>
+<br></p>
+<pre class="prettyprint source"><code>npm run dev
+</code></pre>
+<br>
+The API will be accessible at: 
+<ul>
+<li>http://localhost:3000/api/providers</li>
+<li>http://localhost:3000/api/products.
+<br>
+<br></li>
+</ul>
+<h3>Using the API:</h3>
+<ul>
+<li>You can send HTTP requests to the API using tools like cURL, Postman, or any programming language's HTTP library.</li>
+<li>Refer to the provided endpoints in the API's README file for the available routes and their functionalities.</li>
+<li>Use the appropriate HTTP methods (GET, POST, PUT, DELETE) and URLs to interact with the API.</li>
+<li>Include your API key in the request URL for authentication when necessary.</li>
+</ul>
+<h3>Examples routes:</h3>
+<br>
+<h4>To manage Providers:</h4>
+<ol>
+<li>To get information about one provider with the name , send a GET request to
+<br></li>
+</ol>
+<pre class="prettyprint source"><code>EndPoint:
+
+http://localhost:3000/api/providers?company_name=Mama%20Conchi
+
+
+Response:
+
+[
+  {
+    &quot;company_name&quot;: &quot;Mama Conchi&quot;,
+    &quot;CIF&quot;: &quot;A05000039&quot;,
+    &quot;address&quot;: &quot;Av. de Rafael Alberti, 26, 28018 Madrid&quot;,
+    &quot;url_web&quot;: &quot;https://www.instagram.com/comida_casera_mama_conchi/&quot;
+  }
+]
+</code></pre>
+<br>
+<br>
+<ol start="2">
+<li>To search for all providers, send a GET request to</li>
+</ol>
+<pre class="prettyprint source"><code>EndPoint:
+
+http://localhost:3000/api/providers
+
+
+Response:
+
+[
+  {
+    &quot;company_name&quot;: &quot;Roca Fría&quot;,
+    &quot;CIF&quot;: &quot;B40579751&quot;,
+    &quot;address&quot;: &quot;28033 Madrid&quot;,
+    &quot;url_web&quot;: &quot;https://rocafria.com/&quot;
+  },
+  {
+    &quot;company_name&quot;: &quot;Mama Conchi&quot;,
+    &quot;CIF&quot;: &quot;A05000039&quot;,
+    &quot;address&quot;: &quot;Av. de Rafael Alberti, 26, 28018 Madrid&quot;,
+    &quot;url_web&quot;: &quot;https://www.instagram.com/comida_casera_mama_conchi/&quot;
+  }
+]
+</code></pre>
+<br>
+<br>
+<ol start="3">
+<li>To create a new provider, send a POST request to</li>
+</ol>
+<pre class="prettyprint source"><code>http://localhost:3000/api/authors?API_KEY=YOUR_API_KEY
+</code></pre>
+<br>
+<ol start="4">
+<li>To update an existing provider, send a PUT request to</li>
+</ol>
+<pre class="prettyprint source"><code>http://localhost:3000/api/authors?API_KEY=YOUR_API_KEY
+</code></pre>
+<br>
+<ol start="5">
+<li>To delete an provider, send a DELETE request to</li>
+</ol>
+<pre class="prettyprint source"><code>http://localhost:3000/api/authors?API_KEY=YOUR_API_KEY.
+</code></pre>
+<hr>
+<br>
+<br>
+<h4>To manage Products:</h4>
+<ol>
+<li>To get information about products of one author with the email , send a GET request to</li>
+</ol>
+<pre class="prettyprint source"><code>http://localhost:3000/api/entries?email=user@email.com
+</code></pre>
+<br>
+<ol start="2">
+<li>To search for all entries, send a GET request to</li>
+</ol>
+<pre class="prettyprint source"><code>http://localhost:3000/api/entries
+</code></pre>
+<br>
+<ol start="3">
+<li>To create a new entry, send a POST request to</li>
+</ol>
+<pre class="prettyprint source"><code>http://localhost:3000/api/entries?API_KEY=YOUR_API_KEY
+</code></pre>
+<br>
+<ol start="4">
+<li>To update an existing entry, send a PUT request to</li>
+</ol>
+<pre class="prettyprint source"><code>http://localhost:3000/api/entries?API_KEY=YOUR_API_KEY
+</code></pre>
+<br>
+<ol start="5">
+<li>To delete an entry, send a DELETE request to</li>
+</ol>
+<pre class="prettyprint source"><code>http://localhost:3000/api/entries?API_KEY=YOUR_API_KEY.
+</code></pre>
+<hr>
+<br>
+<br>
+<p>Remember to replace YOUR_API_KEY with your actual API key in the request URLs that require authentication.
+<br>
+That's it!, Happy Coding!!!.
+<br>
+<br></p>
+<hr>
+<br>
+<p><a href="https://www.gromarant.com/"><img align="left" width="64" height="64" src="./public/assets/images/favicon-2023.png"></a>
+<br></p>
+<p><a href="https://www.linkedin.com/in/mariangelica-rodr%C3%ADguez-p%C3%A9rez/">© Mariangelica Rodriguez</a></p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Jun 16 2023 00:55:26 GMT+0200 (hora de verano de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

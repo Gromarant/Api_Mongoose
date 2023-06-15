@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended: true}));
 
 //Prefijos
 app.get('/', (req, res) => {
-  res.send(`<h1>Bienvenid@!!</h1>`);
+  res.send(`<a href="https://github.com/Gromarant/Api_Mongoose/blob/main/README.md">Bienvenid@!!, en este link podrás ver la documentación</a>`);
 });
 
 app.use('/api/products', productsRoutes);
