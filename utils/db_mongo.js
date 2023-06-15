@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 //const DATABASE_URL
-mongoose.connect("mongodb://localhost:27017/providers-products");
+mongoose.connect(process.env.DDBB_Conection);
 
 const db = mongoose.connection;
 
