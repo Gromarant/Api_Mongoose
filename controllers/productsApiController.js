@@ -6,9 +6,9 @@ const Provider = require('../models/providers');
 async function getProducts(req, res)  {
   try {
     let products;
-    if(req.query.title) {
+    if(req.query.company_name) {
       products = await Product
-      .find({ title:  new RegExp(req.query.title, 'i')})
+      .find({ title:  new RegExp(req.query.company_name, 'i')})
       .populate('provider', '-_id -__v')
       .select('-_id -__v');
     }

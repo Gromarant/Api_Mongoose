@@ -1,19 +1,30 @@
-const Provider = require('./models/providers');
-require('../utils/db_mongo');
+const Provider = require('../models/providers');
 
-// Crear publisher/compañía
-// async function createProvider(company_name, CIF, address, url_web) {
-//   const provider = new Provider({
-//     company_name,
-//     CIF,
-//     address,
-//     url_web
-//   });
+// GET http://localhost:3000/api/providers
+// GET http://localhost:3000/api/providers?company_name=providerName
+async function getProviders(req, res)  {
+  try {
+    let providers;
+    if(req.query.company_name) {
+      providers = await Provider
+      .find({ company_name:  new RegExp(req.query.company_name, 'i')})
+      .select('-_id -__v');
+    }
+    else {
+      providers = await Provider
+      .find()
+      .select('-_id -__v');
+    }
+    res.status(200).json(providers);
+  }
+  catch(error) {
+    console.error(error);
+    res.status(400).json({
+      msj: `Error: ${error}`
+    });
+  };
+}
 
-//   const result = await provider.save();
-//   console.log(result);
-// }
-
-// module.exports = {
-//   createProvider
-// }
+module.exports = {
+  getProviders
+}
