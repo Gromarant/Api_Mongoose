@@ -2,13 +2,13 @@ const Product = require('../models/products');
 const Provider = require('../models/providers');
 
 // GET http://localhost:3000/api/products
-// GET http://localhost:3000/api/products?company_name=CompanyName
+// GET http://localhost:3000/api/products?title=productTitle
 async function getProducts(req, res)  {
   try {
     let products;
-    if(req.query.company_name) {
+    if(req.query.title) {
       products = await Product
-      .find({ provider:  new RegExp(req.query.company_name, 'i')})
+      .find({ title:  new RegExp(req.query.title, 'i')})
       .populate('provider', '-_id -__v')
       .select('-_id -__v');
     }

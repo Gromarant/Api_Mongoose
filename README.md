@@ -203,26 +203,32 @@ ___
 
 #### To manage Products:
 
-1. To get information about products of one company with the title , send a GET request to 
+1. To get information about one product with title , send a GET request to 
 
 <br>
 
   ```
   EndPoint:
 
-    https://api-mongoose-alpha.vercel.app/api/products?company_name=Mama%20Conchi
+    https://api-mongoose-alpha.vercel.app/api/products?title=Maki%20salmón
 
 
   Response:
 
-    [
-      {
-        "company_name": "Mama Conchi",
-        "CIF": "A05000039",
-        "address": "Av. de Rafael Alberti, 26, 28018 Madrid",
-        "url_web": "https://www.instagram.com/comida_casera_mama_conchi/"
+  [
+    {
+      "title": "Maki salmón",
+      "price": 5,
+      "description": "sushi",
+      "image": "image",
+      "provider": {
+        "company_name": "Panda sushi 2",
+        "CIF": "pan8694",
+        "address": "av.Pablo neruda 109, 28018 Madrid",
+        "url_web": "www.pandasushi2.eatbu.com"
       }
-    ]
+    }
+  ]
   ```
 
 <br>
