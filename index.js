@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require("mongoose");
 const express = require('express');
 require('./utils/db_mongo');
