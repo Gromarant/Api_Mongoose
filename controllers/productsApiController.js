@@ -113,7 +113,7 @@ async function deleteProduct(req, res) {
       else if (req.body.provider) {
         const { provider } = req.body;
         const providerId = await Provider.find({ company_name: RegExp(provider, 'i') })
-        const deleteProducts = await Product.deleteMany({ provider: providerId})
+        await Product.deleteMany({ provider: providerId})
         res.status(200).json({
           message: `productos eliminados con éxito del proveedor ${provider}`
         });

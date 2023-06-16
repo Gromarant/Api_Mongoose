@@ -130,6 +130,7 @@ EndPoint:
 
     https://api-mongoose-alpha.vercel.app/api/providers
 
+
 request body:
 
     {
@@ -138,6 +139,7 @@ request body:
       "address": "av.Pablo neruda 108, 28018 Madrid",
       "url_web": "www.pandasushi.eatbu.com"
     }
+
 
 response: 
 
@@ -159,6 +161,7 @@ EndPoint:
 
     https://api-mongoose-alpha.vercel.app/api/providers
 
+
 request body:
 
     {
@@ -167,6 +170,7 @@ request body:
         "CIF": "pand985"
       }
     }
+
 
 response: 
 
@@ -186,11 +190,13 @@ EndPoint:
 
     https://api-mongoose-alpha.vercel.app/api/providers
 
+
 request body:
 
     {
       "company_name": "Panda sushi 2"
     }
+
 
 response: 
 
@@ -310,6 +316,7 @@ EndPoint:
 
     https://api-mongoose-alpha.vercel.app/api/products
 
+
 request body:
 
     {
@@ -319,6 +326,7 @@ request body:
       "image": "https://pandarestaurant.es/wp-content/uploads/2021/11/Xian-soba-noodles.jpg",
       "provider_name": "Panda sushi"
     }
+
 
 response: 
 
@@ -337,26 +345,96 @@ response:
 <br>
 <br>
 
-4. To update an existing entry, send a PUT request to 
+5. To update an existing product, send a PUT request to 
 ```
-    http://localhost:3000/api/entries?API_KEY=YOUR_API_KEY
+EndPoint:
+
+    https://api-mongoose-alpha.vercel.app/api/products
+
+
+request body:
+
+    { 
+      "old_title": "product1", 
+      "new_data": {
+        "title": "nigiri sushi / sashimi",
+        "price": 27,
+        "description": "selección del chef 6 piezas",
+        "image": "https://s1.ppllstatics.com/diariovasco/www/multimedia/201906/21/media/cortadas/nigiri-ko9C--624x385@Diario%20Vasco.jpg"
+      }
+    }
+
+
+response: 
+
+    {
+      "message": "producto Modificado con éxito",
+      "newData": {
+        "title": "nigiri sushi / sashimi",
+        "price": 27,
+        "description": "selección del chef 6 piezas",
+        "image": "https://s1.ppllstatics.com/diariovasco/www/multimedia/201906/21/media/cortadas/nigiri-ko9C--624x385@Diario%20Vasco.jpg"
+      }
+    }
 ```
+
+<br>
 <br>
 
-5. To delete an entry, send a DELETE request to 
+6. To delete a specific product, send a DELETE request to 
 
 ```
-http://localhost:3000/api/entries?API_KEY=YOUR_API_KEY.
+EndPoint:
+
+    https://api-mongoose-alpha.vercel.app/api/products
+
+
+request body:
+
+    { 
+      "title": "product3"
+    }
+
+
+response: 
+
+    {
+      "message": "producto eliminado con éxito, title: product3"
+    }
+```
+
+<br>
+<br>
+
+7. To delete all products of a company, send a DELETE request to 
+
+```
+EndPoint:
+
+    https://api-mongoose-alpha.vercel.app/api/products
+
+
+request body:
+
+    { 
+      "provider": "company 1"
+    }
+
+
+response: 
+
+    {
+      "message": "productos eliminados con éxito del proveedor company 1"
+    }
 ```
 ___
 <br>
 <br>
 
-Remember to replace YOUR_API_KEY with your actual API key in the request URLs that require authentication.
-<br>
 That's it!, Happy Coding!!!.
+
 <br>
-<br>
+
 ___
 
 <br>
