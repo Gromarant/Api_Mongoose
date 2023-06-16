@@ -71,6 +71,7 @@ The API will be accessible at:
 <br>
 
 #### To manage Providers:
+<br>
 
 1. To get information about one provider with the name , send a GET request to 
 <br>
@@ -78,19 +79,19 @@ The API will be accessible at:
   ```
   EndPoint:
 
-    https://api-mongoose-alpha.vercel.app/api/providers?company_name=Mama%20Conchi
+      https://api-mongoose-alpha.vercel.app/api/providers?company_name=Mama%20Conchi
 
 
   Response:
 
-    [
-      {
-        "company_name": "Mama Conchi",
-        "CIF": "A05000039",
-        "address": "Av. de Rafael Alberti, 26, 28018 Madrid",
-        "url_web": "https://www.instagram.com/comida_casera_mama_conchi/"
-      }
-    ]
+      [
+        {
+          "company_name": "Mama Conchi",
+          "CIF": "A05000039",
+          "address": "Av. de Rafael Alberti, 26, 28018 Madrid",
+          "url_web": "https://www.instagram.com/comida_casera_mama_conchi/"
+        }
+      ]
   ```
 
 <br>
@@ -100,25 +101,25 @@ The API will be accessible at:
   ```
   EndPoint:
 
-    https://api-mongoose-alpha.vercel.app/api/providers
+      https://api-mongoose-alpha.vercel.app/api/providers
 
 
   Response:
 
-    [
-      {
-        "company_name": "Roca Fría",
-        "CIF": "B40579751",
-        "address": "28033 Madrid",
-        "url_web": "https://rocafria.com/"
-      },
-      {
-        "company_name": "Mama Conchi",
-        "CIF": "A05000039",
-        "address": "Av. de Rafael Alberti, 26, 28018 Madrid",
-        "url_web": "https://www.instagram.com/comida_casera_mama_conchi/"
-      }
-    ]
+      [
+        {
+          "company_name": "Roca Fría",
+          "CIF": "B40579751",
+          "address": "28033 Madrid",
+          "url_web": "https://rocafria.com/"
+        },
+        {
+          "company_name": "Mama Conchi",
+          "CIF": "A05000039",
+          "address": "Av. de Rafael Alberti, 26, 28018 Madrid",
+          "url_web": "https://www.instagram.com/comida_casera_mama_conchi/"
+        }
+      ]
   ```
 <br>
 <br>
@@ -127,28 +128,28 @@ The API will be accessible at:
 ```
 EndPoint:
 
-  https://api-mongoose-alpha.vercel.app/api/providers
+    https://api-mongoose-alpha.vercel.app/api/providers
 
 request body:
 
-  {
-    "company_name": "Panda sushi",
-    "CIF": "pand994",
-    "address": "av.Pablo neruda 108, 28018 Madrid",
-    "url_web": "www.pandasushi.eatbu.com"
-  }
-
-response: 
-
-  {
-    "message": "provider creado con éxito",
-    "provider": {
+    {
       "company_name": "Panda sushi",
       "CIF": "pand994",
       "address": "av.Pablo neruda 108, 28018 Madrid",
       "url_web": "www.pandasushi.eatbu.com"
     }
-  }
+
+response: 
+
+    {
+      "message": "provider creado con éxito",
+      "provider": {
+        "company_name": "Panda sushi",
+        "CIF": "pand994",
+        "address": "av.Pablo neruda 108, 28018 Madrid",
+        "url_web": "www.pandasushi.eatbu.com"
+      }
+    }
 ```
 <br>
 
@@ -156,25 +157,25 @@ response:
 ```
 EndPoint:
 
-  https://api-mongoose-alpha.vercel.app/api/providers
+    https://api-mongoose-alpha.vercel.app/api/providers
 
 request body:
 
-  {
-    "old_companyName": "Panda sushi",
-    "new_companyData": {
-      "CIF": "pand985"
+    {
+      "old_companyName": "Panda sushi",
+      "new_companyData": {
+        "CIF": "pand985"
+      }
     }
-  }
 
 response: 
 
-  {
-    "message": "provider Modificado con éxito",
-    "newDataProvider": {
-      "CIF": "pand985"
+    {
+      "message": "provider Modificado con éxito",
+      "newDataProvider": {
+        "CIF": "pand985"
+      }
     }
-  }
 ```
 <br>
 
@@ -183,77 +184,162 @@ response:
 ```
 EndPoint:
 
-  https://api-mongoose-alpha.vercel.app/api/providers
+    https://api-mongoose-alpha.vercel.app/api/providers
 
 request body:
 
-  {
-    "company_name": "Panda sushi 2"
-  }
+    {
+      "company_name": "Panda sushi 2"
+    }
 
 response: 
 
-  {
-    "message": "provider eliminado con éxito, company_name: Panda sushi 2"
-  }
+    {
+      "message": "provider eliminado con éxito, company_name: Panda sushi 2"
+    }
 ```
 ___
 <br>
 <br>
 
 #### To manage Products:
-
-1. To get information about one product with title , send a GET request to 
-
 <br>
 
+1. To get one product with title , send a GET request to 
+
   ```
-  EndPoint:
+EndPoint:
 
     https://api-mongoose-alpha.vercel.app/api/products?title=Maki%20salmón
 
 
-  Response:
+Response:
 
-  [
     {
-      "title": "Maki salmón",
-      "price": 5,
-      "description": "sushi",
-      "image": "image",
-      "provider": {
-        "company_name": "Panda sushi 2",
-        "CIF": "pan8694",
-        "address": "av.Pablo neruda 109, 28018 Madrid",
-        "url_web": "www.pandasushi2.eatbu.com"
+      "message": "producto creado",
+      "product": {
+        "title": "Maki salmón",
+        "price": 5,
+        "description": "sushi",
+        "image": "image",
+        "provider": "648ca9e5380b8fefd581b750"
       }
     }
-  ]
-  ```
-
-<br>
-<br>
-
-  ```
-  http://localhost:3000/api/entries?email=user@email.com
-  ```
-<br>
-
-2. To search for all entries, send a GET request to
-  ```
-  http://localhost:3000/api/entries
-  ```
-<br>
-
-3. To create a new entry, send a POST request to 
 ```
-http://localhost:3000/api/entries?API_KEY=YOUR_API_KEY
+
+<br>
+<br>
+
+2. To get all products of a company with company name , send a GET request to 
+
+  ```
+EndPoint:
+
+    https://api-mongoose-alpha.vercel.app/api/products?companyName=Panda%20sushi%202
+
+
+Response:
+
+    [
+      {
+        "title": "Maki salmón",
+        "price": 5,
+        "description": "sushi",
+        "image": "image",
+        "provider": {
+          "company_name": "Panda sushi 2",
+          "CIF": "pan8694",
+          "address": "av.Pablo neruda 109, 28018 Madrid",
+          "url_web": "www.pandasushi2.eatbu.com"
+        }
+      },
+      {
+        "title": "Sopa de pollo con champiñones",
+        "price": 3.95,
+        "description": "Sopa tradicional",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf22KDdRrQ6U4tMniX3ZZ-0HLb3O2GrUWVHw&usqp=CAU",
+        "provider": {
+          "company_name": "Panda sushi 2",
+          "CIF": "pan8694",
+          "address": "av.Pablo neruda 109, 28018 Madrid",
+          "url_web": "www.pandasushi2.eatbu.com"
+        }
+      },
+      {...},
+      {...}
+    ]
+  ```
+
+<br>
+<br>
+
+3. To get all products , send a GET request to 
+
+  ```
+EndPoint:
+
+    https://api-mongoose-alpha.vercel.app/api/products
+
+
+Response:
+
+    [
+      {
+        "title": "Maki salmón",
+        "price": 5,
+        "description": "sushi",
+        "image": "image",
+        "provider": {
+          "company_name": "Panda sushi 2",
+          "CIF": "pan8694",
+          "address": "av.Pablo neruda 109, 28018 Madrid",
+          "url_web": "www.pandasushi2.eatbu.com"
+        }
+      },
+      {...},
+      {...}
+    ]
+  ```
+
+<br>
+<br>
+
+4. To create a new product, send a POST request to 
 ```
+EndPoint:
+
+    https://api-mongoose-alpha.vercel.app/api/products
+
+request body:
+
+    {
+      "title": "Arróz frito con pollo",
+      "price": 4.75,
+      "description": "Arróz frito tradicional",
+      "image": "https://pandarestaurant.es/wp-content/uploads/2021/11/Xian-soba-noodles.jpg",
+      "provider_name": "Panda sushi"
+    }
+
+response: 
+
+    {
+      "message": "producto creado",
+      "product": {
+        "title": "Arróz frito con pollo",
+        "price": 4.75,
+        "description": "Arróz frito tradicional",
+        "image": "https://pandarestaurant.es/wp-content/uploads/2021/11/Xian-soba-noodles.jpg",
+        "provider": "648c9bce6329187183f210c7"
+      }
+    }
+```
+
+<br>
 <br>
 
 4. To update an existing entry, send a PUT request to 
 ```
-http://localhost:3000/api/entries?API_KEY=YOUR_API_KEY
+    http://localhost:3000/api/entries?API_KEY=YOUR_API_KEY
 ```
 <br>
 

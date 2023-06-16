@@ -43,19 +43,20 @@ async function createProduct(req, res) {
     if (req.body && typeof req.body === 'object' && req.body !== {} ) {
       const { title, price, description, image, provider_name } = req.body;
       const providerId = await Provider.find({ company_name: RegExp(provider_name, 'i') })
-      const product = {
-        "title": title,
-        "price": price,
-        "description": description,
-        "image": image,
-        "provider": providerId[0]._id.toString()
-      };
-      await new Product(product).save();
-      res.status(201).json( {
-        message: "producto creado",
-        product: product
-      })
-       
+      if (providerId) {
+        const product = {
+          "title": title,
+          "price": price,
+          "description": description,
+          "image": image,
+          "provider": providerId[0]._id.toString()
+        };
+        await new Product(product).save();
+        res.status(201).json( {
+          message: "producto creado",
+          product: product
+        })
+      }
     };
   }
   catch(error) {
