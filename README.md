@@ -13,7 +13,7 @@ This rest api is created on node.js with express (server), javascript files with
 <br>
 
 ## API Base URL
-The base URL's for accessing the API are: http://localhost:3000/api/providers and http://localhost:3000/api/products
+The base URL's for accessing the API are: https://api-mongoose-alpha.vercel.app/api/providers and https://api-mongoose-alpha.vercel.app/api/products
 <br>
 <br>
 
@@ -40,7 +40,7 @@ To use this API, you will need:
 <br>
 <br>
 ```
-npm install
+  npm install
 ```
 <br>
 
@@ -50,13 +50,13 @@ In the project directory, run the following command to start the API server:
 <br>
 <br>
 ```
-npm run dev
+  npm run dev
 ```
 <br>
 The API will be accessible at: 
 
-  - http://localhost:3000/api/providers
-  - http://localhost:3000/api/products.
+  - https://api-mongoose-alpha.vercel.app/api/providers
+  - https://api-mongoose-alpha.vercel.app/api/products
 <br>
 <br>
 
@@ -78,19 +78,19 @@ The API will be accessible at:
   ```
   EndPoint:
 
-  http://localhost:3000/api/providers?company_name=Mama%20Conchi
+    https://api-mongoose-alpha.vercel.app/api/providers?company_name=Mama%20Conchi
 
 
   Response:
 
-  [
-    {
-      "company_name": "Mama Conchi",
-      "CIF": "A05000039",
-      "address": "Av. de Rafael Alberti, 26, 28018 Madrid",
-      "url_web": "https://www.instagram.com/comida_casera_mama_conchi/"
-    }
-  ]
+    [
+      {
+        "company_name": "Mama Conchi",
+        "CIF": "A05000039",
+        "address": "Av. de Rafael Alberti, 26, 28018 Madrid",
+        "url_web": "https://www.instagram.com/comida_casera_mama_conchi/"
+      }
+    ]
   ```
 
 <br>
@@ -100,45 +100,102 @@ The API will be accessible at:
   ```
   EndPoint:
 
-  http://localhost:3000/api/providers
+    https://api-mongoose-alpha.vercel.app/api/providers
 
 
   Response:
 
-  [
-    {
-      "company_name": "Roca Fría",
-      "CIF": "B40579751",
-      "address": "28033 Madrid",
-      "url_web": "https://rocafria.com/"
-    },
-    {
-      "company_name": "Mama Conchi",
-      "CIF": "A05000039",
-      "address": "Av. de Rafael Alberti, 26, 28018 Madrid",
-      "url_web": "https://www.instagram.com/comida_casera_mama_conchi/"
-    }
-  ]
+    [
+      {
+        "company_name": "Roca Fría",
+        "CIF": "B40579751",
+        "address": "28033 Madrid",
+        "url_web": "https://rocafria.com/"
+      },
+      {
+        "company_name": "Mama Conchi",
+        "CIF": "A05000039",
+        "address": "Av. de Rafael Alberti, 26, 28018 Madrid",
+        "url_web": "https://www.instagram.com/comida_casera_mama_conchi/"
+      }
+    ]
   ```
 <br>
 <br>
 
 3. To create a new provider, send a POST request to 
 ```
-http://localhost:3000/api/authors?API_KEY=YOUR_API_KEY
+EndPoint:
+
+  https://api-mongoose-alpha.vercel.app/api/providers
+
+request body:
+
+  {
+    "company_name": "Panda sushi",
+    "CIF": "pand994",
+    "address": "av.Pablo neruda 108, 28018 Madrid",
+    "url_web": "www.pandasushi.eatbu.com"
+  }
+
+response: 
+
+  {
+    "message": "provider creado con éxito",
+    "provider": {
+      "company_name": "Panda sushi",
+      "CIF": "pand994",
+      "address": "av.Pablo neruda 108, 28018 Madrid",
+      "url_web": "www.pandasushi.eatbu.com"
+    }
+  }
 ```
 <br>
 
 4. To update an existing provider, send a PUT request to 
 ```
-http://localhost:3000/api/authors?API_KEY=YOUR_API_KEY
+EndPoint:
+
+  https://api-mongoose-alpha.vercel.app/api/providers
+
+request body:
+
+  {
+    "old_companyName": "Panda sushi",
+    "new_companyData": {
+      "CIF": "pand985"
+    }
+  }
+
+response: 
+
+  {
+    "message": "provider Modificado con éxito",
+    "newDataProvider": {
+      "CIF": "pand985"
+    }
+  }
 ```
 <br>
 
 5. To delete an provider, send a DELETE request to 
 
 ```
-http://localhost:3000/api/authors?API_KEY=YOUR_API_KEY.
+EndPoint:
+
+  https://api-mongoose-alpha.vercel.app/api/providers
+
+request body:
+
+  {
+    "company_name": "Panda sushi 2"
+  }
+
+response: 
+
+  {
+    "message": "provider eliminado con éxito, company_name: Panda sushi 2"
+  }
 ```
 ___
 <br>
@@ -146,7 +203,31 @@ ___
 
 #### To manage Products:
 
-1. To get information about products of one author with the email , send a GET request to 
+1. To get information about products of one company with the title , send a GET request to 
+
+<br>
+
+  ```
+  EndPoint:
+
+    https://api-mongoose-alpha.vercel.app/api/products?company_name=Mama%20Conchi
+
+
+  Response:
+
+    [
+      {
+        "company_name": "Mama Conchi",
+        "CIF": "A05000039",
+        "address": "Av. de Rafael Alberti, 26, 28018 Madrid",
+        "url_web": "https://www.instagram.com/comida_casera_mama_conchi/"
+      }
+    ]
+  ```
+
+<br>
+<br>
+
   ```
   http://localhost:3000/api/entries?email=user@email.com
   ```

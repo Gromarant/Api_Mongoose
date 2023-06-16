@@ -2,13 +2,13 @@ const Product = require('../models/products');
 const Provider = require('../models/providers');
 
 // GET http://localhost:3000/api/products
-// GET http://localhost:3000/api/products?title=productTitle
+// GET http://localhost:3000/api/products?company_name=CompanyName
 async function getProducts(req, res)  {
   try {
     let products;
     if(req.query.company_name) {
       products = await Product
-      .find({ title:  new RegExp(req.query.company_name, 'i')})
+      .find({ provider:  new RegExp(req.query.company_name, 'i')})
       .populate('provider', '-_id -__v')
       .select('-_id -__v');
     }
@@ -33,7 +33,7 @@ async function getProducts(req, res)  {
 async function createProduct(req, res) {
   try {
     if (req.body && typeof req.body === 'object' && req.body !== {} ) {
-      const { title, price, description, image, provider_name } = req.body
+      const { title, price, description, image, provider_name } = req.body;
       const providerId = await Provider.find({ company_name: RegExp(provider_name, 'i') })
       const product = {
         "title": title,
@@ -43,10 +43,11 @@ async function createProduct(req, res) {
         "provider": providerId[0]._id.toString()
       };
       await new Product(product).save();
-      res.status(201).json({
+      res.status(201).json( {
         message: "producto creado",
         product: product
-      });
+      })
+       
     };
   }
   catch(error) {
@@ -105,7 +106,7 @@ async function deleteProduct(req, res) {
         const providerId = await Provider.find({ company_name: RegExp(provider, 'i') })
         const deleteProducts = await Product.deleteMany({ provider: providerId})
         res.status(200).json({
-          message: `productos eliminados con éxito: ${deleteProducts}`
+          message: `productos eliminados con éxito del proveedor ${provider}`
         });
       };
     };
